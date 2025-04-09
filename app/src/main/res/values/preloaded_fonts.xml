@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/croissant_one</item>
+        <item>@font/fanwood_text</item>
         <item>@font/love_ya_like_a_sister</item>
         <item>@font/montserrat_alternates_thin</item>
+        <item>@font/paprika</item>
     </array>
 </resources>
