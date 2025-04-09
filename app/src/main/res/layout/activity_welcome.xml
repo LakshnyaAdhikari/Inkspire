@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/croissant_one"
+        android:gravity="center_horizontal"
         android:text="Share your story with us!"
         android:textAlignment="center"
         android:textColorLink="@color/darkestbrown"
@@ -28,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/paprika"
+        android:gravity="center_horizontal"
         android:textAlignment="center"
         android:text="Inkspire"
         android:textColorLink="@color/black"
@@ -84,5 +86,6 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/SignUpButton"
         app:layout_constraintStart_toStartOf="@+id/SignUpButton"
-        tools:layout_editor_absoluteY="478dp" />
+        tools:layout_editor_absoluteY="478dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
