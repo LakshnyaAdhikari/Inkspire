@@ -28,4 +28,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="256dp"
+        android:layout_height="211dp"
+        app:srcCompat="@drawable/thelogo"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="29dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
