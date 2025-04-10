@@ -1,6 +1,5 @@
 package com.example.inkspire
 
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,23 +10,21 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.inkspire.databinding.ActivitySignInandRegistrationBinding
 import com.example.inkspire.databinding.ActivityWelcomeBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import java.net.Authenticator
 import javax.security.auth.login.LoginException
 
 class SignInandRegistrationActivity : AppCompatActivity() {
-    private val binding: ActivitySignInandRegistrationBinding by lazy {
+    private val binding:ActivitySignInandRegistrationBinding by lazy {
         ActivitySignInandRegistrationBinding.inflate(layoutInflater)
     }
     private lateinit var auth:FirebaseAuth
-    private lateinit var database:FirebaseDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
         //initialize firebase authentication
 
-        auth= FireBaseAuth.getInstance()
+        auth= FirebaseAuth.getInstance()
 
         val action:String? = intent.getStringExtra("action")
         //adjust visibility for login
@@ -61,18 +58,18 @@ binding.Loginbutton.visibility= View.VISIBLE
         else if (action=="Signup"){
             binding.Loginbutton.isEnabled=false
             binding.Loginbutton.alpha=0.5f
-            binding.registrationbutton.setonClickListener{
+            binding.Signupbutton.setOnClickListener{
                 //get data from edit text field
-                val registerName=binding.registerName.text.toString()
-                val register_email=binding.registerName.text.toString()
-                val register_password=binding.registerName.text.toString()
+                val registerName=binding.loginname.text.toString()
+                val register_email=binding.loginname.text.toString()
+                val register_password=binding.loginname.text.toString()
                 if( registerName.isEmpty() || register_email.isEmpty() ||register_password.isEmpty()){
-                    Toast.makeText(this, text:"please fill all the details", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "please fill all the details", Toast.LENGTH_SHORT).show()
                 }
                 else{
                     auth.createUserWithEmailAndPassword(register_email,register_password)
                         .addOnCompleteListener { task->
-                            if(task.issuccessful){
+                            if(task.isSuccessful){
 
                             }
                             else{
