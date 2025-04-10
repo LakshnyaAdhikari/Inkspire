@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649245501613",
+    "project_id": "inkspire-78f16",
+    "storage_bucket": "inkspire-78f16.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649245501613:android:37e61dd83e605263a07e24",
+        "android_client_info": {
+          "package_name": "com.example.inkspire"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr6zzFoYY0YpgZyo2wzp6xazIzaYG6nLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
