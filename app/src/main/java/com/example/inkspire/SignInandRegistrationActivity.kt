@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.inkspire.databinding.ActivitySignInandRegistrationBinding
 import com.example.inkspire.databinding.ActivityWelcomeBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.net.Authenticator
 import javax.security.auth.login.LoginException
 
@@ -18,6 +19,7 @@ class SignInandRegistrationActivity : AppCompatActivity() {
         ActivitySignInandRegistrationBinding.inflate(layoutInflater)
     }
     private lateinit var auth:FirebaseAuth
+    private lateinit var database: FirebaseDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,7 +32,7 @@ class SignInandRegistrationActivity : AppCompatActivity() {
         //adjust visibility for login
 
         if (action=="Login")  {
-binding.Loginbutton.visibility= View.VISIBLE
+            binding.Loginbutton.visibility= View.VISIBLE
             binding.loginname.visibility= View.VISIBLE
             binding.loginpassword.visibility= View.VISIBLE
 
