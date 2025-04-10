@@ -29,8 +29,20 @@ binding.Loginbutton.visibility= View.VISIBLE
             binding.loginname.visibility= View.VISIBLE
             binding.loginpassword.visibility= View.VISIBLE
 
-            binding.logintext.visibility=View.INVISIBLE
-            binding.Signupbutton.visibility=View.INVISIBLE
+            binding.logintext.isEnabled=false
+            binding.logintext.alpha=0.5f
+
+            binding.loginname.visibility=View.GONE
+            binding.registeredemail.visibility=View.GONE
+            binding.registeredpassword.visibility=View.GONE
+            binding.cardview.visibility=View.GONE
+
+
+            binding.Signupbutton.isEnabled=false
+            binding.Signupbutton.alpha=0.5f
+
+
+
 
 
 
@@ -39,6 +51,8 @@ binding.Loginbutton.visibility= View.VISIBLE
         }
 
         else if (action=="Signup"){
+            binding.Loginbutton.isEnabled=false
+            binding.Loginbutton.alpha=0.5f
 
         }
 
