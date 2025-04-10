@@ -1,5 +1,6 @@
 package com.example.inkspire
 
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,6 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.inkspire.databinding.ActivitySignInandRegistrationBinding
 import com.example.inkspire.databinding.ActivityWelcomeBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.net.Authenticator
 import javax.security.auth.login.LoginException
 
@@ -16,7 +19,8 @@ class SignInandRegistrationActivity : AppCompatActivity() {
     private val binding: ActivitySignInandRegistrationBinding by lazy {
         ActivitySignInandRegistrationBinding.inflate(layoutInflater)
     }
-    private lateinit var auth:FireBaseAuth
+    private lateinit var auth:FirebaseAuth
+    private lateinit var database:FirebaseDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
