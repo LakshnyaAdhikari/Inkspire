@@ -65,8 +65,8 @@ class SignInandRegistrationActivity : AppCompatActivity() {
             binding.Signupbutton.setOnClickListener{
                 //get data from edit text field
                 val registerName=binding.loginname.text.toString()
-                val register_email=binding.loginname.text.toString()
-                val register_password=binding.loginname.text.toString()
+                val register_email=binding.loginemail.text.toString()
+                val register_password=binding.loginpassword.text.toString()
                 if( registerName.isEmpty() || register_email.isEmpty() ||register_password.isEmpty()){
                     Toast.makeText(this, "please fill all the details", Toast.LENGTH_SHORT).show()
                 }
@@ -78,7 +78,10 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                                 user?.let {
                                     val userReference = database.getReference("users")
                                     val userId: String = user.uid
-                                    val userData =  com.example.inkspire.Model.UserData(registerName, register_password)
+                                    val userData = com.example.inkspire.Model.UserData(
+                                        registerName,
+                                        register_password
+                                    )
                                     userReference.child(userId).setValue(userData)
                                     Toast.makeText(this,"User Sign Up Successful",Toast.LENGTH_SHORT).show()
                                 }
