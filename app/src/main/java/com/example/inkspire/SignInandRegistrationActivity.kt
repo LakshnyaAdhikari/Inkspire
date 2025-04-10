@@ -28,8 +28,11 @@ class SignInandRegistrationActivity : AppCompatActivity() {
 binding.Loginbutton.visibility= View.VISIBLE
             binding.loginname.visibility= View.VISIBLE
             binding.loginpassword.visibility= View.VISIBLE
+
             binding.logintext.visibility=View.INVISIBLE
             binding.Signupbutton.visibility=View.INVISIBLE
+
+
 
 
 
