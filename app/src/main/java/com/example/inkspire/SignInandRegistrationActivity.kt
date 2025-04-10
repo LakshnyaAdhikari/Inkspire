@@ -1,6 +1,7 @@
 package com.example.inkspire
 
 import android.os.Bundle
+import android.service.autofill.UserData
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -27,6 +28,7 @@ class SignInandRegistrationActivity : AppCompatActivity() {
         //initialize firebase authentication
 
         auth= FirebaseAuth.getInstance()
+        database= FirebaseDatabase.getInstance()
 
         val action:String? = intent.getStringExtra("action")
         //adjust visibility for login
@@ -72,10 +74,16 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                     auth.createUserWithEmailAndPassword(register_email,register_password)
                         .addOnCompleteListener { task->
                             if(task.isSuccessful){
-
-                            }
-                            else{
-
+                                val user = auth.currentUser
+                                user?.let {
+                                    val userReference = database.getReference("users")
+                                    val userId: String = user.uid
+                                    val userData =  com.example.inkspire.Model.UserData(registerName, register_password)
+                                    userReference.child(userId).setValue(userData)
+                                    Toast.makeText(this,"User Sign Up Successful",Toast.LENGTH_SHORT).show()
+                                }
+                            }else{
+                                Toast.makeText(this,"User Sign Up Failed",Toast.LENGTH_SHORT).show()
                             }
                         }
                 }
