@@ -8,6 +8,10 @@ android {
     namespace = "com.example.inkspire"
     compileSdk = 35
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.inkspire"
         minSdk = 16
