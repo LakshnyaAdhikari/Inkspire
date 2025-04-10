@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="@+id/Signupbutton"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="667dp" />
+        tools:layout_editor_absoluteY="621dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <EditText
         android:id="@+id/registeredemail"
@@ -150,8 +150,8 @@
         android:layout_height="93dp"
         app:srcCompat="@drawable/person3"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="237dp" />
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="212dp" />
 
     <EditText
         android:id="@+id/loginname"
@@ -166,9 +166,10 @@
         android:textColorHint="#020202"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="352dp" />
+        tools:layout_editor_absoluteY="341dp" />
 
     <EditText
         android:id="@+id/loginemail"
@@ -183,9 +184,10 @@
         android:textColorHint="#070707"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/loginname"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/loginname"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="424dp" />
+        tools:layout_editor_absoluteY="406dp" />
 
     <EditText
         android:id="@+id/loginpassword"
@@ -200,7 +202,8 @@
         android:textColorHint="#070707"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/loginemail"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/loginemail"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="490dp" />
+        tools:layout_editor_absoluteY="475dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
