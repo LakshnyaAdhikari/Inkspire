@@ -84,7 +84,7 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                                         register_password
                                     )
                                     userReference.child(userId).setValue(userData)
-                                        .addOnCompleteListener {
+                                        .addOnSuccessListener {
                                             Log.d("TAG", "onCreate: data saved")
 
 
