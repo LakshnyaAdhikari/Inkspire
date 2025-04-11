@@ -2,6 +2,7 @@ package com.example.inkspire
 
 import android.os.Bundle
 import android.service.autofill.UserData
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -83,6 +84,18 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                                         register_password
                                     )
                                     userReference.child(userId).setValue(userData)
+                                        .addOnCompleteListener {
+                                            Log.d("TAG", "onCreate: data saved")
+
+
+
+                                        }
+
+                                        .addOnFailureListener{ e ->
+                                            Log.e("TAG", "onCreate: error saving data ${e.message}")
+
+
+                                        }
                                     Toast.makeText(this,"User Sign Up Successful",Toast.LENGTH_SHORT).show()
                                 }
                             }else{
