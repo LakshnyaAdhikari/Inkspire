@@ -11,8 +11,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.example.inkspire.R
 import register.WelcomeActivity
+import com.google.firebaseauth.auth.FireBaseAuth
 
 class SplashActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Handler(Looper.getMainLooper()).postDelayed({
@@ -22,10 +24,13 @@ class SplashActivity : AppCompatActivity() {
 
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash)
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
     }
 }

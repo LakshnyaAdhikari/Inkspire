@@ -52,6 +52,7 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                     auth.signInWithEmailAndPassword(login_email,login_password)
                         .addOnCompleteListener{ task ->
                             if(task.isSuccessful){
+                                auth.signOut()
                                 Toast.makeText(this, "login successful", Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this,MainActivity::class.java))
                             }else{
