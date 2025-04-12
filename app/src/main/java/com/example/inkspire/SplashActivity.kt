@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.example.inkspire.R
 import register.WelcomeActivity
-import com.google.firebaseauth.auth.FireBaseAuth
+import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
 

@@ -10,18 +10,23 @@ import com.example.inkspire.MainActivity
 import com.example.inkspire.R
 import com.example.inkspire.SignInandRegistrationActivity
 import com.example.inkspire.databinding.ActivityWelcomeBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+
 
 class WelcomeActivity : AppCompatActivity() {
     private val binding: ActivityWelcomeBinding by lazy {
         ActivityWelcomeBinding.inflate(layoutInflater)
     }
 
+    private lateinit var auth:FirebaseAuth
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth=FireBaseAuth.getInstance()
+        auth=FirebaseAuth.getInstance()
         enableEdgeToEdge()
         setContentView(binding.root)
-        private lateinit var auth:FireBaseAuth
 
 
         binding.LoginButton.setOnClickListener{
@@ -46,12 +51,12 @@ class WelcomeActivity : AppCompatActivity() {
             insets
         }
     }
-    override fun onstart() {
+     override fun onStart() {
         super.onStart()
         val currentUser: FirebaseUser? = auth.currentUser
 
         if(currentUser != null){
-            startActivity(Intent(packageContext:this, MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }
