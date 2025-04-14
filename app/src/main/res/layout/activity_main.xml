@@ -6,13 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/darkbrown">
+    android:background="@color/beige">
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/texture"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp"
         tools:ignore="MissingConstraints" />
@@ -42,6 +41,7 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/beige"
             android:src="@drawable/person3"
             tools:src="@drawable/person3" />
     </androidx.cardview.widget.CardView>
@@ -50,7 +50,7 @@
         android:id="@+id/imageButton"
         android:layout_width="35dp"
         android:layout_height="36dp"
-        android:background="@drawable/texture"
+        android:background="@color/beige"
         android:src="@drawable/bookmark2icon"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
@@ -59,13 +59,26 @@
         tools:layout_editor_absoluteX="307dp" />
 
     <SearchView
-        android:layout_width="280dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="24dp"
-        android:queryHint="search"
+        android:id="@+id/search_blog"
+        android:layout_width="314dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/search_shape"
+        android:iconifiedByDefault="true"
+        android:queryHint="Search"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/search_blog"
+        app:layout_constraintStart_toStartOf="@+id/search_blog"
+        app:layout_constraintTop_toBottomOf="@+id/search_blog" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
