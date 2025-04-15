@@ -78,7 +78,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/search_blog"
         app:layout_constraintStart_toStartOf="@+id/search_blog"
-        app:layout_constraintTop_toBottomOf="@+id/search_blog" />
+        app:layout_constraintTop_toBottomOf="@+id/search_blog"
+        tools:listitem="@layout/blog_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

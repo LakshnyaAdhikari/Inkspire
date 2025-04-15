@@ -9,15 +9,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/beige">
 
         <!-- Title TextView -->
 
         <!-- Profile Image CardView -->
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/heading"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="60dp"
             android:layout_marginStart="9dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="60dp"
@@ -35,15 +38,16 @@
             android:id="@+id/cardView2"
             android:layout_width="34dp"
             android:layout_height="34dp"
+            android:layout_marginRight="9dp"
             android:layout_marginTop="1dp"
             android:layout_marginEnd="9dp"
             app:cardCornerRadius="100dp"
             app:cardElevation="2dp"
-            app:layout_constraintTop_toTopOf="@+id/emptyTextView"
-            app:layout_constraintEnd_toStartOf="@+id/emptyTextView">
+            app:layout_constraintEnd_toStartOf="@+id/username"
+            app:layout_constraintTop_toTopOf="@+id/username">
 
             <ImageView
-                android:id="@+id/profileImage"
+                android:id="@+id/profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -52,31 +56,32 @@
 
         <!-- Empty TextView (assuming you need this for spacing?) -->
         <TextView
-            android:id="@+id/emptyTextView"
+            android:id="@+id/username"
             android:layout_width="70dp"
             android:layout_height="44dp"
-            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
             android:layout_marginTop="13dp"
-            android:text="New Blogger"
+            android:layout_marginEnd="9dp"
             android:fontFamily="@font/fanwood_text"
-            android:textSize="15sp"
-            android:textColor="@color/darkestbrown"
-            android:textAlignment="center"
             android:gravity="center"
+            android:text="New Blogger"
+            android:textAlignment="center"
+            android:textColor="@color/darkestbrown"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/love_ya_like_a_sister"
             android:text="April 15, 2025"
             android:textColor="@color/darkbrown"
             android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="@+id/emptyTextView"
+            app:layout_constraintEnd_toEndOf="@+id/username"
             app:layout_constraintStart_toStartOf="@+id/cardView2"
-            app:layout_constraintTop_toBottomOf="@+id/emptyTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/username" />
 
         <View
             android:id="@+id/divider"
@@ -84,40 +89,80 @@
             android:layout_height="1dp"
             android:layout_marginTop="8dp"
             android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="@+id/emptyTextView"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintEnd_toEndOf="@+id/username"
+            app:layout_constraintStart_toStartOf="@+id/heading"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/post"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_marginTop="13dp"
+            android:fontFamily="@font/paprika"
+            android:letterSpacing="0.03"
+            android:lineHeight="22sp"
+            android:maxLines="4"
             android:text="I recently read a helpful article on Hashnode by Simon Egersand titled Write Git Commit Messages Your Colleagues Will Love, and it inspired me to dive a little deeper into understanding what makes a Git commit good or bad.
         "
-            android:maxLines="4"
             android:textColor="@color/black"
-            android:fontFamily="@font/paprika"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/divider"
             app:layout_constraintTop_toBottomOf="@+id/divider"
-            android:letterSpacing="0.03"
-            android:lineHeight="22sp"
 
             />
 
         <Button
-            android:layout_width="180dp"
-            android:layout_height="40dp"
+            android:id="@+id/readmorebutton"
+            android:layout_width="215dp"
+            android:layout_height="48dp"
             android:backgroundTint="@color/darkerbrown"
             android:text="@string/read_more"
             android:textColor="@color/beige"
-            radiu
+            app:cornerRadius="9dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
-            app:layout_constraintVertical_bias="0.384"
-            tools:layout_editor_absoluteX="9dp"
-            />
+            app:layout_constraintEnd_toEndOf="@+id/post"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/post"
+            app:layout_constraintTop_toBottomOf="@+id/post"
+            app:layout_constraintVertical_bias="0.687" />
+
+        <TextView
+            android:id="@+id/likecount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/fanwood_text"
+            android:text="20"
+            android:textColor="@color/darkestbrown"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/readmorebutton"
+            app:layout_constraintStart_toEndOf="@+id/readmorebutton"
+            app:layout_constraintTop_toTopOf="@+id/readmorebutton" />
+
+        <ImageButton
+            android:id="@+id/likebutton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/beige"
+            app:layout_constraintBottom_toBottomOf="@+id/likecount"
+            app:layout_constraintStart_toEndOf="@+id/likecount"
+            app:layout_constraintTop_toTopOf="@+id/likecount"
+            app:srcCompat="@drawable/heart2icon" />
+
+        <ImageButton
+            android:id="@+id/postsavebutton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@color/beige"
+            app:layout_constraintBottom_toBottomOf="@+id/likebutton"
+            app:layout_constraintStart_toEndOf="@+id/likebutton"
+            app:layout_constraintTop_toTopOf="@+id/likebutton"
+            app:srcCompat="@drawable/bookmark2icon" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
