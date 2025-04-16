@@ -94,7 +94,7 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                                     val userId: String = user.uid
                                     val userData = com.example.inkspire.Model.UserData(
                                         registerName,
-                                        register_password
+                                        register_email
                                     )
                                     userReference.child(userId).setValue(userData)
                                         .addOnSuccessListener {
