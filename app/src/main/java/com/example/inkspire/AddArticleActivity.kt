@@ -38,9 +38,9 @@ class AddArticleActivity : AppCompatActivity() {
              val description:String= binding.blogDescription.editText?.text.toString().trim()
 
               if(title.isEmpty() || description.isEmpty())  {
-                  Toast.makeText(context:this , text:"please fill all the fields",Toast.LENGTH_SHORT).show()
+                  Toast.makeText(context:this, text:"please fill all the fields",Toast.LENGTH_SHORT).show()
               }
-               val user:FirebaseUser?: auth.currentUser
+               val user:FirebaseUser?:auth.currentUser
                if(user!=null){
                    val userId:String = user.uid
                    val userName:String= user.displayName?"Anonymous"
