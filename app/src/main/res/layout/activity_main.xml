@@ -81,5 +81,19 @@
         app:layout_constraintTop_toBottomOf="@+id/search_blog"
         tools:listitem="@layout/blog_item" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingAddArticleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        app:backgroundTint="@color/darkerbrown"
+        app:tint="@color/beige"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/add2icon" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
