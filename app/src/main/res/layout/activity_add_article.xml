@@ -32,7 +32,7 @@
         app:srcCompat="@drawable/backicon" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/blogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
@@ -49,20 +49,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:background="@color/darkbrown"
+        app:counterEnabled="true"
+        app:counterMaxLength="100"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" >
+        app:layout_constraintStart_toStartOf="@+id/blogTitle"
+        app:layout_constraintTop_toBottomOf="@+id/blogTitle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="12dp"
-            android:hint="hint"
-            android:maxLength="100" />
+            android:fontFamily="@font/paprika"
+            android:hint="Blog Title"
+            android:maxLength="100"
+            android:textColor="@color/beige" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/blogDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fanwood_text"
@@ -73,19 +78,42 @@
         tools:layout_editor_absoluteY="323dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/textInputLayout2"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/darkbrown"
+        app:counterMaxLength="100"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
+        app:layout_constraintStart_toStartOf="@id/blogDescription"
+        app:layout_constraintTop_toBottomOf="@+id/blogDescription">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:hint="hint" />
+            android:fontFamily="@font/paprika"
+            android:hint="Blog Description "
+            android:textColor="@color/beige"
+            android:textColorHint="@color/beige" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/addlogButton"
+        android:layout_width="215dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/darkerbrown"
+        android:text="Add Blog"
+        android:textColor="@color/beige"
+        app:cornerRadius="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintVertical_bias="0.453" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
