@@ -30,7 +30,6 @@ class AddArticleActivity : AppCompatActivity() {
 
             binding.addBlogButton.setOnClickListener{
 
-                val title: EditText? =binding.blogTitle.editText?.text.toString().trin()
             }
         }
     }
