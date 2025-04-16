@@ -26,8 +26,7 @@ class BlogAdapter (private val items: List<BlogItemModel>):RecyclerView.Adapter<
 
     inner class blogViewHolder (private val binding: BlogItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(blogItemModel: BlogItemModel) {
-          binding.heading.text=BlogItemModel.heading
-            binding.profile.setImageResource()
+          binding.heading.text=blogItemModel.heading
 
             binding.username.text=blogItemModel.username
             binding.date.text=blogItemModel.date
