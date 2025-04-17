@@ -2,7 +2,7 @@ package com.example.inkspire
 
 import android.content.Intent
 import android.os.Bundle
-import android.service.autofill.UserData
+import com.example.inkspire.Model.UserData
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -52,7 +52,6 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                     auth.signInWithEmailAndPassword(login_email,login_password)
                         .addOnCompleteListener{ task ->
                             if(task.isSuccessful){
-                                auth.signOut()
                                 Toast.makeText(this, "login successful", Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this,MainActivity::class.java))
                             }else{
@@ -92,10 +91,14 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                                 user?.let {
                                     val userReference = database.getReference("users")
                                     val userId: String = user.uid
-                                    val userData = com.example.inkspire.Model.UserData(
-                                        registerName,
-                                        register_email
+                                    val userData = UserData(
+                                        name = registerName,
+                                        email = register_email,
+                                        profileImage = "", // or a real image URL if available
+                                        likecount = 0,
+                                        imageUrl = ""
                                     )
+
                                     userReference.child(userId).setValue(userData)
                                         .addOnSuccessListener {
                                             Log.d("TAG", "onCreate: data saved")

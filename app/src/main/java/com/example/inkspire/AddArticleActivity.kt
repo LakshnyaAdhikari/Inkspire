@@ -20,7 +20,6 @@ class AddArticleActivity : AppCompatActivity() {
     private val binding:ActivityAddArticleBinding by lazy {
         ActivityAddArticleBinding.inflate(layoutInflater)
     }
-
     private val databaseReference: DatabaseReference=FirebaseDatabase.getInstance().getReference("blogs")
     private val userReference: DatabaseReference=FirebaseDatabase.getInstance().getReference("users")
     private val auth=FirebaseAuth.getInstance()
@@ -74,6 +73,6 @@ class AddArticleActivity : AppCompatActivity() {
                }
             }
         }
-        
+
     }
 }

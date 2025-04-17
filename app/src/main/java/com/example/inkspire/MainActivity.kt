@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadUserProfileImage(userId: String) {
-        val userReference = FirebaseDatabase.getInstance().reference.child("user").child(userId)
+        val userReference = FirebaseDatabase.getInstance().reference.child("users").child(userId)
 
         userReference.child("profileImage").addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {

@@ -34,6 +34,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"></activity>
+        <activity android:name=".SignInandRegistrationActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

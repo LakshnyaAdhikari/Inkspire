@@ -9,5 +9,12 @@ data class UserData(
     val likecount:Int,
     val imageUrl:String
 ){
-    constructor():this(name="",email="",profileImage="")
+    constructor() : this(
+        name = "",
+        email = "",
+        profileImage = "",
+        likecount = 0,
+        imageUrl = ""
+    )
+
 }
