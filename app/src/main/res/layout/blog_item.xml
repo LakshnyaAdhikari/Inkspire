@@ -162,20 +162,6 @@
             app:layout_constraintTop_toTopOf="@+id/likebutton"
             app:srcCompat="@drawable/bookmark2icon" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="right"
-            app:constraint_referenced_ids="heading" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="right"
-            app:constraint_referenced_ids="cardView2" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

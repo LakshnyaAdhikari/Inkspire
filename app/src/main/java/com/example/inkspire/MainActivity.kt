@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         if(userId!= null){
             loadUserProfileImage(userId)
         }
-        val recyclerView=binding.blogRecyclerView()
+        /*val recyclerView=binding.blogRecyclerView()
         val blogAdapter=BlogAdapter(blogItems)
         recyclerView.adapter=blogAdapter
         recyclerView.layoutManager=LinearLayoutManager(this)
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
+        }*/
     }
 
     private fun loadUserProfileImage(userId: String) {
@@ -83,17 +83,12 @@ class MainActivity : AppCompatActivity() {
         userReference.child("profileImage").addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val profileImageUrl:String? = snapshot.getValue(String::class.java)
-                if(profileImageUrl!=null){
-                    Glide.with(this@MainActivity)
-                        .load(profileImageUrl)
-                        .into(binding.profileImageUrl)
 
-                }
 
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MainActivity,text="error loading profile image",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity,"error loading profile image",Toast.LENGTH_SHORT).show()
 
             }
         })

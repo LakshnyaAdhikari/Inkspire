@@ -14,6 +14,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/fanwood_text"
         android:text="Don't have an account?"
+        android:textColor="@color/darkestbrown"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/Loginbutton"
         app:layout_constraintHorizontal_bias="0.508"
@@ -26,14 +27,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
         android:fontFamily="@font/croissant_one"
         android:gravity="center_horizontal"
         android:text="Share your story with us!"
         android:textAlignment="center"
+        android:textColor="@color/darkestbrown"
         android:textColorLink="@color/darkestbrown"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
@@ -64,7 +64,7 @@
         android:id="@+id/loginemail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Enter your Email"
@@ -73,7 +73,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:visibility="visible" />
 
     <EditText
@@ -111,7 +111,7 @@
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@id/loginpassword"
-        app:layout_goneMarginTop="380dp"
+        app:layout_goneMarginTop="300dp"
         app:strokeColor="@color/darkestbrown"
         app:strokeWidth="3dp" />
 
@@ -119,7 +119,7 @@
         android:id="@+id/Signupbutton"
         android:layout_width="270dp"
         android:layout_height="60dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/darkbrown"
         android:fontFamily="@font/fanwood_text"
         android:text="SIGN UP"
@@ -130,9 +130,11 @@
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/signuppassword"
+        app:layout_goneMarginTop="300dp"
         app:strokeColor="@color/darkestbrown"
         app:strokeWidth="3dp" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"

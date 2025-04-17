@@ -20,21 +20,25 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/croissant_one"
         android:text="New Feed"
-        android:textSize="16sp"
+        android:textColor="@color/darkestbrown"
+        android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="34dp"
         android:layout_height="34dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="16dp"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -50,13 +54,14 @@
         android:id="@+id/imageButton"
         android:layout_width="35dp"
         android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/beige"
         android:src="@drawable/bookmark2icon"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.538"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="307dp" />
+        tools:ignore="MissingConstraints" />
 
     <SearchView
         android:id="@+id/search_blog"
@@ -72,6 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/blogRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
@@ -85,15 +91,14 @@
         android:id="@+id/floatingAddArticleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="32dp"
         android:clickable="true"
         app:backgroundTint="@color/darkerbrown"
-        app:tint="@color/beige"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/add2icon" />
+        app:srcCompat="@drawable/add2icon"
+        app:tint="@color/beige" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
