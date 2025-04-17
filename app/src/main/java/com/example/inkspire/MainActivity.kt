@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                         blogItems.add(blogItem)
                     }
                 }
-                blogItems.reverse()
+                blogItems.reverse
                 blogAdapter.notifyDataSetChanged()
             }
             override fun onCancelled(errorHandler: DatabaseErrorHandler){
