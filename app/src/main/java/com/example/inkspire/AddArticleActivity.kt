@@ -39,7 +39,7 @@ class AddArticleActivity : AppCompatActivity() {
              val description:String= binding.blogDescription.editText?.text.toString().trim()
 
               if(title.isEmpty() || description.isEmpty())  {
-                  Toast.makeText(context:this, text:"please fill all the fields",Toast.LENGTH_SHORT).show()
+                  Toast.makeText(this, text:"please fill all the fields",Toast.LENGTH_SHORT).show()
               }
                val user:FirebaseUser?:auth.currentUser
                if(user!=null){
@@ -66,6 +66,7 @@ class AddArticleActivity : AppCompatActivity() {
                                    likecount:0,
                                    description,
                                    userImageUrl,
+
 
 
                                )
