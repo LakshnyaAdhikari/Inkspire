@@ -20,10 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="84dp"
-        android:textSize="20sp"
         android:fontFamily="@font/paprika"
-        android:text="Powered By:"
+        android:text="Powered By: Team Vortex"
         android:textColor="@color/darkestbrown"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -32,8 +32,10 @@
         android:id="@+id/imageView"
         android:layout_width="256dp"
         android:layout_height="211dp"
-        app:srcCompat="@drawable/thelogo"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="29dp" />
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:srcCompat="@drawable/thelogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

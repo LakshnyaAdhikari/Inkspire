@@ -17,7 +17,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class AddArticleActivity : AppCompatActivity() {
+    /*
     private val binding:ActivityAddArticleBinding by lazy {
+
         ActivityAddArticleBinding.inflate(layoutInflater)
     }
     private val databaseReference: DatabaseReference=FirebaseDatabase.getInstance().getReference("blogs")
@@ -75,5 +77,5 @@ class AddArticleActivity : AppCompatActivity() {
             }
         }
 
-    }
+    }*/
 }
