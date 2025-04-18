@@ -45,28 +45,31 @@ class MainActivity : AppCompatActivity() {
         if(userId!= null){
             loadUserProfileImage(userId)
         }
-        /*val recyclerView=binding.blogRecyclerView()
+        val recyclerView=binding.blogRecyclerView
         val blogAdapter=BlogAdapter(blogItems)
         recyclerView.adapter=blogAdapter
         recyclerView.layoutManager=LinearLayoutManager(this)
 
         databaseReference.addValueEventListener(object: ValueEventListener{
-            override fun onDataChange(snapshot: TextSnapshot){
+            override fun onDataChange(snapshot: DataSnapshot) {
                 blogItems.clear()
-                for(snapshot in snapshot.children){
-                    val blogItem=snapshot.getValue(snapshot.BlogItemModel::class.java)
-                    if(blogItem!=null){
+                for (snapshot in snapshot.children){
+                    val blogItem = snapshot.getValue(BlogItemModel::class.java)
+                    if (blogItem!=null){
                         blogItems.add(blogItem)
                     }
                 }
-                blogItems.reverse
+                blogItems.reverse()
                 blogAdapter.notifyDataSetChanged()
+
             }
-            override fun onCancelled(errorHandler: DatabaseErrorHandler){
-                Toast(this@MainActivity,"Blog loading failed",Toast.LENGTH_SHORT).show()
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@MainActivity,"Blog loading failed",Toast.LENGTH_SHORT).show()
+
             }
+
         })
-        recyclerView.layout
+        //recyclerView.layout()
         binding.floatingAddArticleButton.setOnClickListener {
             startActivity(Intent(this,AddArticleActivity::class.java))
         }
@@ -74,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }*/
+        }
     }
 
     private fun loadUserProfileImage(userId: String) {
