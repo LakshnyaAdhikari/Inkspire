@@ -95,7 +95,7 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                                         name = registerName,
                                         email = register_email,
                                         profileImage = "", // or a real image URL if available
-                                        likecount = 0,
+                                        likeCount = 0,
                                         imageUrl = ""
                                     )
 
