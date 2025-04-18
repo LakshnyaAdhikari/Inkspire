@@ -37,10 +37,9 @@ class SignInandRegistrationActivity : AppCompatActivity() {
         //adjust visibility for login
 
         if (action=="Login")  {
-            binding.Loginbutton.visibility= View.VISIBLE
-            binding.signupname.visibility= View.VISIBLE
-            binding.signuppassword.visibility= View.VISIBLE
-
+            binding.loginemail.visibility = View.VISIBLE
+            binding.loginpassword.visibility = View.VISIBLE
+            binding.Loginbutton.visibility = View.VISIBLE
             binding.logintext.isEnabled=false
             binding.logintext.alpha=0.5f
             binding.Loginbutton.setOnClickListener {
@@ -62,10 +61,10 @@ class SignInandRegistrationActivity : AppCompatActivity() {
                 }
             }
 
-            binding.signupname.visibility=View.GONE
-            binding.loginemail.visibility=View.GONE
-            binding.loginpassword.visibility=View.GONE
-            binding.cardview.visibility=View.GONE
+            binding.signupname.visibility = View.GONE
+            binding.signupmail.visibility = View.GONE
+            binding.signuppassword.visibility = View.GONE
+            binding.Signupbutton.visibility = View.VISIBLE
 
 
             binding.Signupbutton.isEnabled=false
@@ -73,6 +72,16 @@ class SignInandRegistrationActivity : AppCompatActivity() {
         }
 
         else if (action=="Signup"){
+            binding.signupname.visibility = View.VISIBLE
+            binding.signupmail.visibility = View.VISIBLE
+            binding.signuppassword.visibility = View.VISIBLE
+            binding.Signupbutton.visibility = View.VISIBLE
+            binding.logintext.visibility = View.GONE
+
+            // Hide login fields
+            binding.loginemail.visibility = View.GONE
+            binding.loginpassword.visibility = View.GONE
+            binding.Loginbutton.visibility = View.GONE
             binding.Loginbutton.isEnabled=false
             binding.Loginbutton.alpha=0.5f
             binding.Signupbutton.setOnClickListener{
