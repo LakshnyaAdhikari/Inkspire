@@ -28,10 +28,10 @@ class BlogAdapter (private val items: List<BlogItemModel>):RecyclerView.Adapter<
         fun bind(blogItemModel: BlogItemModel) {
           binding.heading.text=blogItemModel.heading
 
-            binding.username.text=blogItemModel.username
+            binding.username.text=blogItemModel.userName
             binding.date.text=blogItemModel.date
             binding.post.text=blogItemModel.post
-            binding.likecount.text=blogItemModel.likecount.toString()
+            binding.likecount.text=blogItemModel.likeCount.toString()
 
 
         }
