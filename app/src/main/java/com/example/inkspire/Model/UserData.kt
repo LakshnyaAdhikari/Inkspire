@@ -6,14 +6,14 @@ data class UserData(
     val name: String="",
     val email: String="",
     val profileImage:String="",
-    val likecount:Int,
+    val likeCount:Int=0,
     val imageUrl:String
 ){
     constructor() : this(
         name = "",
         email = "",
         profileImage = "",
-        likecount = 0,
+        likeCount = 0,
         imageUrl = ""
     )
 
