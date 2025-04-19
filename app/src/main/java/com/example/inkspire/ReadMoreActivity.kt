@@ -16,6 +16,9 @@ class ReadMoreActivity : AppCompatActivity() {
         binding=ActivityReadMoreBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+//        binding.backButton.setOnClickListener{
+//            finish()
+//        }
         val blogs = intent.getParcelableExtra<BlogItemModel>("blogItem")
         if(blogs!=null){
             //Retrive user related data here e. x blog title etc.
