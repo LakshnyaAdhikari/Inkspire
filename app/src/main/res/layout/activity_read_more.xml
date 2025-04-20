@@ -22,7 +22,7 @@
 
 
                 <ImageButton
-                    android:id="@+id/back_imageButton3"
+                    android:id="@+id/backButton1"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="32dp"
@@ -44,8 +44,8 @@
                     android:textColor="@color/darkbrown"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/back_imageButton3"
-                    app:layout_constraintTop_toBottomOf="@+id/back_imageButton3" />
+                    app:layout_constraintStart_toStartOf="@+id/backButton1"
+                    app:layout_constraintTop_toBottomOf="@+id/backButton1" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView3"
@@ -80,11 +80,13 @@
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="136dp"
                     android:text="TextView"
                     android:textColor="@color/darkbrown"
                     app:layout_constraintBottom_toBottomOf="@+id/username"
                     app:layout_constraintEnd_toEndOf="@+id/titletext"
-                    app:layout_constraintTop_toTopOf="@+id/textView10" />
+                    app:layout_constraintTop_toTopOf="@id/backButton1"
+                    app:layout_constraintVertical_bias="0.491" />
 
                 <TextView
                     android:id="@+id/blog"
