@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.database.DatabaseErrorHandler
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.TextSnapshot
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         auth=FirebaseAuth.getInstance()
-        databaseReference = FirebaseDatabase.getInstance().reference.child("blogs")
+        databaseReference = FirebaseDatabase.getInstance("https://inkspire-78f16-default-rtdb.asia-southeast1.firebasedatabase.app").reference.child("blogs")
 
 
         val userId:String? = auth.currentUser?.uid
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         if(userId!= null){
             loadUserProfileImage(userId)
         }
+
         val recyclerView=binding.blogRecyclerView
         val blogAdapter=BlogAdapter(blogItems)
         recyclerView.adapter=blogAdapter
@@ -56,7 +58,11 @@ class MainActivity : AppCompatActivity() {
                 for (snapshot in snapshot.children){
                     val blogItem = snapshot.getValue(BlogItemModel::class.java)
                     if (blogItem!=null){
+                        Log.d("FirebaseData", "Blog: ${blogItem.heading}")
                         blogItems.add(blogItem)
+
+                    }else{
+                        Log.e("FirebaseData", "Failed to parse blog item")
                     }
                 }
                 blogItems.reverse()

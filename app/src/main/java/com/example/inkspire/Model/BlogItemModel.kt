@@ -8,16 +8,14 @@ data class BlogItemModel(
     val userName: String? ="null",
     val date: String? ="null",
     val post: String? ="null",
-    val likeCount:Int=0,
-    val imageUrl: String? ="null"
+    val likeCount:Int=0
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString()?: "null",
         parcel.readString()?: "null",
         parcel.readString()?: "null",
         parcel.readString()?: "null",
-        parcel.readInt(),
-        parcel.readString()?: "null"
+        parcel.readInt()
     ) {
     }
 
@@ -27,7 +25,6 @@ data class BlogItemModel(
         parcel.writeString(date)
         parcel.writeString(post)
         parcel.writeInt(likeCount)
-        parcel.writeString(imageUrl)
     }
 
     override fun describeContents(): Int {

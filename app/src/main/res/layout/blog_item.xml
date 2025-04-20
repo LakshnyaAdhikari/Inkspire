@@ -21,36 +21,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="60dp"
             android:fontFamily="@font/fanwood_text"
             android:maxLines="2"
             android:text="uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
             android:textColor="@color/darkestbrown"
             android:textSize="22sp"
-            app:layout_constraintEnd_toStartOf="@id/cardView2"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/username"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="9dp"
-            android:layout_marginRight="9dp"
-            app:cardCornerRadius="100dp"
-            app:cardElevation="2dp"
-            app:layout_constraintEnd_toStartOf="@+id/username"
-            app:layout_constraintTop_toTopOf="@+id/username">
-
-            <ImageView
-                android:id="@+id/profile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/person3" />
-        </androidx.cardview.widget.CardView>
 
         <!-- Empty TextView (assuming you need this for spacing?) -->
         <TextView
@@ -78,7 +56,6 @@
             android:textColor="@color/darkbrown"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="@+id/username"
-            app:layout_constraintStart_toStartOf="@+id/cardView2"
             app:layout_constraintTop_toBottomOf="@+id/username" />
 
         <View
@@ -113,6 +90,7 @@
             android:id="@+id/readmorebutton"
             android:layout_width="215dp"
             android:layout_height="48dp"
+            android:layout_marginStart="5dp"
             android:backgroundTint="@color/darkerbrown"
             android:text="@string/read_more"
             android:textColor="@color/beige"
@@ -128,22 +106,20 @@
             android:id="@+id/likecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:fontFamily="@font/fanwood_text"
+            android:layout_marginStart="15dp"
+            android:fontFamily="sans-serif"
             android:text="20"
             android:textColor="@color/darkestbrown"
-            android:textSize="30sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/readmorebutton"
             app:layout_constraintStart_toEndOf="@+id/readmorebutton"
             app:layout_constraintTop_toTopOf="@+id/readmorebutton" />
 
         <ImageButton
             android:id="@+id/likebutton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="5dp"
             android:background="@color/beige"
             app:layout_constraintBottom_toBottomOf="@+id/likecount"
             app:layout_constraintStart_toEndOf="@+id/likecount"
@@ -152,10 +128,8 @@
 
         <ImageButton
             android:id="@+id/postsavebutton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="33dp"
+            android:layout_height="34dp"
             android:background="@color/beige"
             app:layout_constraintBottom_toBottomOf="@+id/likebutton"
             app:layout_constraintStart_toEndOf="@+id/likebutton"
