@@ -25,6 +25,8 @@ class ReadMoreActivity : AppCompatActivity() {
             binding.titletext.text=blogs.heading
             binding.username.text=blogs.userName
             binding.date.text=blogs.date
+            //binding.blogDescriptionTextView.text=blogs.post
+
             
         }else{
             Toast.makeText(this, "failed to load blog", Toast.LENGTH_SHORT).show()
