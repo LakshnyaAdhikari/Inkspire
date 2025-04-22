@@ -19,6 +19,7 @@ data class BlogItemModel(
         parcel.readString()?: "null",
         parcel.readString()?: "null",
         parcel.readInt()
+
     ) {
     }
 
