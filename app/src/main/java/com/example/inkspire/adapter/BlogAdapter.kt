@@ -21,10 +21,11 @@ class BlogAdapter(private val blogList: MutableList<BlogItemModel>) : RecyclerVi
         fun bind(blog: BlogItemModel) {
             val context: Context = binding.root.context
 
-            binding.heading.text = blog.heading
-            binding.username.text = blog.userName
-            binding.date.text = blog.date
-            binding.post.text = blog.post
+            binding.heading.text = blog.heading ?: "Untitled"
+            binding.username.text = blog.userName ?: "Unknown"
+            binding.date.text = blog.date ?: "Date not available"
+            binding.post.text = blog.post ?: "No content available"
+
             binding.likecount.text = blog.likeCount.toString()
 
             val isLiked = blog.likedBy?.contains(currentUserUid) == true

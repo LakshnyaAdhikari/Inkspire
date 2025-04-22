@@ -22,9 +22,11 @@ class ReadMoreActivity : AppCompatActivity() {
         val blogs = intent.getParcelableExtra<BlogItemModel>("blogItem")
         if(blogs!=null){
             //Retrive user related data here e. x blog title etc.
+            binding.blog.text = blogs.post
             binding.titletext.text=blogs.heading
             binding.username.text=blogs.userName
             binding.date.text=blogs.date
+            binding.imageView4.setImageResource(R.drawable.person3)
             //binding.blogDescriptionTextView.text=blogs.post
 
             
