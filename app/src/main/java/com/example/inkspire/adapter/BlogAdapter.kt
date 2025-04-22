@@ -10,34 +10,47 @@ import com.example.inkspire.Model.BlogItemModel
 import com.example.inkspire.ReadMoreActivity
 import com.example.inkspire.databinding.BlogItemBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
-class BlogAdapter(private val blogList: MutableList<BlogItemModel>) : RecyclerView.Adapter<BlogAdapter.BlogViewHolder>() {
+class BlogAdapter(private val blogList: MutableList<BlogItemModel>) :
+    RecyclerView.Adapter<BlogAdapter.BlogViewHolder>() {
 
     private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
-    private val database = FirebaseDatabase.getInstance("https://inkspire-78f16-default-rtdb.asia-southeast1.firebasedatabase.app").reference.child("blogs")
+    private val database = FirebaseDatabase.getInstance("https://inkspire-78f16-default-rtdb.asia-southeast1.firebasedatabase.app")
+        .reference.child("blogs")
 
-    inner class BlogViewHolder(private val binding: BlogItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class BlogViewHolder(private val binding: BlogItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
         fun bind(blog: BlogItemModel) {
             val context: Context = binding.root.context
 
+            // Set data to views
             binding.heading.text = blog.heading
             binding.username.text = blog.userName
             binding.date.text = blog.date
             binding.post.text = blog.post
             binding.likecount.text = blog.likeCount.toString()
 
-            val isLiked = blog.likedBy?.contains(currentUserUid) == true
+            // Load profile image using Glide if available
+           // Glide.with(context)
+               // .load(blog.ProfileImage)
+               // .into(binding.profileImage)
+
+            // Update like button image based on liked status
+            val isLiked = blog.likedBy.contains(currentUserUid)
             updateLikeButtonImage(isLiked)
 
+            // Like button click listener
             binding.likebutton.setOnClickListener {
                 if (currentUserUid != null && blog.postId != null) {
                     handleLike(blog)
                 } else {
-                    Toast.makeText(context, "YOU HAVE TO LOGIN FIRST", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "You have to login first", Toast.LENGTH_SHORT).show()
                 }
             }
 
+            // Read More button click listener
             binding.readmorebutton.setOnClickListener {
                 val intent = Intent(context, ReadMoreActivity::class.java)
                 intent.putExtra("blogItem", blog)
@@ -45,30 +58,41 @@ class BlogAdapter(private val blogList: MutableList<BlogItemModel>) : RecyclerVi
             }
         }
 
+        // Update heart icon based on like status
         private fun updateLikeButtonImage(isLiked: Boolean) {
-            val drawableId = if (isLiked) com.example.inkspire.R.drawable.heart3icon else com.example.inkspire.R.drawable.heart2icon
+            val drawableId = if (isLiked) com.example.inkspire.R.drawable.heart3icon
+            else com.example.inkspire.R.drawable.heart2icon
             binding.likebutton.setImageResource(drawableId)
         }
 
+        // Like/Unlike handler
         private fun handleLike(blog: BlogItemModel) {
-            val postRef = database.child(blog.postId!!)
+            val postRef = database.child(blog.postId!!).child("likedBy")
 
-            val likedByList = blog.likedBy ?: mutableListOf()
+            postRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val likedByList = snapshot.getValue(object :
+                        GenericTypeIndicator<MutableList<String>>() {}) ?: mutableListOf()
 
-            if (likedByList.contains(currentUserUid)) {
-                likedByList.remove(currentUserUid)
-                blog.likeCount--
-            } else {
-                likedByList.add(currentUserUid!!)
-                blog.likeCount++
-            }
+                    if (likedByList.contains(currentUserUid)) {
+                        likedByList.remove(currentUserUid)
+                    } else {
+                        likedByList.add(currentUserUid!!)
+                    }
 
-            blog.likedBy = likedByList
-            postRef.child("likeCount").setValue(blog.likeCount)
-            postRef.child("likedBy").setValue(likedByList)
+                    // Update likeCount and likedBy in the database
+                    val updates = mapOf(
+                        "likedBy" to likedByList,
+                        "likeCount" to likedByList.size
+                    )
+                    database.child(blog.postId!!).updateChildren(updates)
 
-            binding.likecount.text = blog.likeCount.toString()
-            updateLikeButtonImage(likedByList.contains(currentUserUid))
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(binding.root.context, "Like failed: ${error.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
     }
 

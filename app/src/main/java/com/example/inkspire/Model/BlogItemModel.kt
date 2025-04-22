@@ -10,7 +10,7 @@ data class BlogItemModel(
     val post: String? ="null",
     var likeCount:Int=0,
     val ProfileImage:String?="null",
-    val postId:String?="null",
+    var postId:String?="null",
     var likedBy: MutableList<String> = mutableListOf()
 ) : Parcelable{
     constructor(parcel: Parcel) : this(

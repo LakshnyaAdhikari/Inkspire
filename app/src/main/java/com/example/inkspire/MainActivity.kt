@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 blogItems.clear()
                 for (snapshot in snapshot.children){
                     val blogItem = snapshot.getValue(BlogItemModel::class.java)
+                     blogItem?.postId=snapshot.key
                     if (blogItem!=null){
                         Log.d("FirebaseData", "Blog: ${blogItem.heading}")
                         blogItems.add(blogItem)

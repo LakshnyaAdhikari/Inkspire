@@ -22,18 +22,24 @@ class AddArticleActivity : AppCompatActivity() {
     }
 
     private val databaseReference: DatabaseReference =
-        FirebaseDatabase.getInstance().getReference("blogs")
+        FirebaseDatabase.getInstance("https://inkspire-78f16-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("blogs")
+
     private val userReference: DatabaseReference =
-        FirebaseDatabase.getInstance().getReference("users")
+        FirebaseDatabase.getInstance("https://inkspire-78f16-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("users")
+
     private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
-    binding.backButton2.setOnClickListener{
-       finish()
-    }
+
+        binding.backButton2.setOnClickListener {
+            finish()
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -52,8 +58,8 @@ class AddArticleActivity : AppCompatActivity() {
             val user: FirebaseUser? = auth.currentUser
             if (user != null) {
                 val userId: String = user.uid
-                val userName: String = user.displayName ?: "Anonymous"
 
+                // Fetch user profile details from users node
                 userReference.child(userId)
                     .addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
@@ -62,28 +68,36 @@ class AddArticleActivity : AppCompatActivity() {
                                 val userNameFromDB: String = userData.name
                                 val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
 
-                                val blogItem = BlogItemModel(
-                                    title,
-                                    userNameFromDB,
-                                    currentDate,
-                                    description,
-                                    0
-                                )
-
                                 val key = databaseReference.push().key
                                 if (key != null) {
-                                    val blogRef = databaseReference.child(key)
-                                    blogRef.setValue(blogItem).addOnCompleteListener {
-                                        if (it.isSuccessful) {
-                                            finish()
-                                        } else {
-                                            Toast.makeText(
-                                                this@AddArticleActivity,
-                                                "Failed to add Blog",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                    val blogItem = BlogItemModel(
+                                        heading = title,
+                                        userName = userNameFromDB,
+                                        date = currentDate,
+                                        post = description,
+                                        likeCount = 0,
+                                        ProfileImage = userData.profileImage, // From user's profile image URL
+                                        postId = key,                        // Assigning generated unique postId
+                                        likedBy = mutableListOf()             // Starting with empty likedBy list
+                                    )
+
+                                    databaseReference.child(key).setValue(blogItem)
+                                        .addOnCompleteListener {
+                                            if (it.isSuccessful) {
+                                                Toast.makeText(
+                                                    this@AddArticleActivity,
+                                                    "Blog Added Successfully!",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                                finish()
+                                            } else {
+                                                Toast.makeText(
+                                                    this@AddArticleActivity,
+                                                    "Failed to add Blog",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
                                         }
-                                    }
                                 }
                             }
                         }
