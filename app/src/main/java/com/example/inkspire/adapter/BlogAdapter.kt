@@ -2,7 +2,6 @@ package com.example.inkspire.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,121 +9,77 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.inkspire.Model.BlogItemModel
 import com.example.inkspire.ReadMoreActivity
 import com.example.inkspire.databinding.BlogItemBinding
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.collection.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
-class BlogAdapter (private val items: List<BlogItemModel>):RecyclerView.Adapter<BlogAdapter.blogViewHolder>(){
+class BlogAdapter(private val blogList: MutableList<BlogItemModel>) : RecyclerView.Adapter<BlogAdapter.BlogViewHolder>() {
 
+    private val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
+    private val database = FirebaseDatabase.getInstance("https://inkspire-78f16-default-rtdb.asia-southeast1.firebasedatabase.app").reference.child("blogs")
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): blogViewHolder {
-        val inflater: LayoutInflater = LayoutInflater.from(parent.context)
-        val binding:BlogItemBinding=BlogItemBinding.inflate(inflater, parent, false)
-        return blogViewHolder(binding)
-    }
+    inner class BlogViewHolder(private val binding: BlogItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(blog: BlogItemModel) {
+            val context: Context = binding.root.context
 
+            binding.heading.text = blog.heading
+            binding.username.text = blog.userName
+            binding.date.text = blog.date
+            binding.post.text = blog.post
+            binding.likecount.text = blog.likeCount.toString()
 
+            val isLiked = blog.likedBy?.contains(currentUserUid) == true
+            updateLikeButtonImage(isLiked)
 
-    override fun onBindViewHolder(holder: blogViewHolder, position: Int) {
-        val blogItem:BlogItemModel=items[position]
-        holder.bind(blogItem)
-    }
-
-    override fun getItemCount(): Int {
-     return items.size    }
-
-    private fun handleLikeButtonClicked(postId: Any, blogItemModel: Any) {
-        val userReference:DatabaseReference= databaseReference.child("user").child(currentUser!!.uid)
-        val postLikeRefernce= databaseReference.child("blogs").child(postId).child("likes")
-
-        postLikeRefernce.child(currentUser.uid).addEventListenerForSingleValueEvent(object :
-            ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    userReference.child("likes").child(postId).removeValue()
-                    .addOnSuccessListener{
-                        postLikeRefernce.child(currentUser.uid).removeValue()
-                        blogItemModel.likedBy?.remove(currentUser.uid)
-                        updateLikeButtonImage(binding , liked = :fixed)
-
-                        val newLikeCount:Int=blogItemModel.likCount-1
-                        blogItemModel.likeCount=newLikeCount
-                        databaseReference.child("blogs").child(postId).child(newLikeCount).setValue(newLikeCount)
-                        notifyDataSetChanged()
-                    }
-                        .addOnFailureListener{e->Log.e("LikedClicked","onDatachnage:Failed to unlike the blog $e") }
+            binding.likebutton.setOnClickListener {
+                if (currentUserUid != null && blog.postId != null) {
+                    handleLike(blog)
+                } else {
+                    Toast.makeText(context, "YOU HAVE TO LOGIN FIRST", Toast.LENGTH_SHORT).show()
                 }
-                else{
-                    userReference.child("likes").child(postId).setValue(true)
-                        .addOnSuccessListener {
-                            postLikeRefernce.child(currentUser.uid).setValue(true)
-                            blogItemModel.likedBy?.add(currenUser.uid)
-                            updateLikeButtonImage(true)
-
-                            val newLikeCount=blogItemModel.likeCount=+1
-                            blogItemModel.likeCount=newLikeCount
-                            databaseReference.child("blogs").child(postId).child("likescount").setValues()
-                            notifyDataSetChanged()
-                        }
-                        .addOnFailureListener() {e->Log.e("LikedClicked","onDatachnage:Failed to unlike the blog $e")  }
-                }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
-        })
-    }}
 
-    inner class blogViewHolder (private val binding: BlogItemBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(blogItemModel: BlogItemModel) {
-          binding.heading.text=blogItemModel.heading
-
-            binding.username.text=blogItemModel.userName
-            binding.date.text=blogItemModel.date
-            binding.post.text=blogItemModel.post
-            binding.likecount.text=blogItemModel.likeCount.toString()
-
-            //set on click listener
-            binding.root.setOnClickListener{
-                val context= binding.root.context
-                val intent= Intent(context,ReadMoreActivity::class.java)
-                intent.putExtra("blogItem",blogItemModel)
+            binding.readmorebutton.setOnClickListener {
+                val intent = Intent(context, ReadMoreActivity::class.java)
+                intent.putExtra("blogItem", blog)
                 context.startActivity(intent)
             }
         }
-        val postLikReference:DatabaseReference=databaseReference.child(pathString:"blogs").child(pathString:"likes")
-        val currentUserLiked = currentUser?.uid?. let{ uid->postLikReference.child(uid).addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    binding.likebutton.setImageResource(R.drawable.heart3icon)
-                }else{
-                    binding.likebutton.setImageResource(R.drawable.heart2icon)
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
-            binding.likebutton.setOnClickListener(){
-                if(currentUserLiked!=null){
-                    handleLikeButtonClicked(postId,blogItemModel)
-                }
-                else{
-                    Toast.makeText(this@BlogAdapter,"YOU HAVE TO LOGIN FIRST",Toast.LENGTH_SHORT).short()
-                }
-            }
+        private fun updateLikeButtonImage(isLiked: Boolean) {
+            val drawableId = if (isLiked) com.example.inkspire.R.drawable.heart3icon else com.example.inkspire.R.drawable.heart2icon
+            binding.likebutton.setImageResource(drawableId)
         }
 
-    }
-    private fun updateLikeButtonImage(binding: BlogItemBinding ,liked:Boolean){
-        if(liked){
-            binding.likebutton.setImageResource(R.drawable.heart2icon)
-        }
-        else{
-            binding.likebutton.setImageResource(R.drawable.heart3icon)
+        private fun handleLike(blog: BlogItemModel) {
+            val postRef = database.child(blog.postId!!)
+
+            val likedByList = blog.likedBy ?: mutableListOf()
+
+            if (likedByList.contains(currentUserUid)) {
+                likedByList.remove(currentUserUid)
+                blog.likeCount--
+            } else {
+                likedByList.add(currentUserUid!!)
+                blog.likeCount++
+            }
+
+            blog.likedBy = likedByList
+            postRef.child("likeCount").setValue(blog.likeCount)
+            postRef.child("likedBy").setValue(likedByList)
+
+            binding.likecount.text = blog.likeCount.toString()
+            updateLikeButtonImage(likedByList.contains(currentUserUid))
         }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlogViewHolder {
+        val binding = BlogItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return BlogViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: BlogViewHolder, position: Int) {
+        holder.bind(blogList[position])
+    }
+
+    override fun getItemCount(): Int = blogList.size
 }
